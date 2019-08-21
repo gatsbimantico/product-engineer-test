@@ -1,0 +1,24 @@
+{
+  "name": "product-engineer-test",
+  "version": "0.0",
+  "description": "A cipher chat",
+  "main": "index.js",
+  "repository": "https://github.com/gatsbimantico/product-engineer-test.git",
+  "author": "Cesar Costas Carrera",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "projects/*"
+    ]
+  },
+  "scripts": {
+    "start": "wsrun start",
+    "build": "wsrun build",
+    "test": "wsrun test",
+    "eject": "wsrun eject"
+  },
+  "dependencies": {
+    "wsrun": "^5.0.0"
+  }
+}

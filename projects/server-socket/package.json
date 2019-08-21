@@ -1,0 +1,17 @@
+{
+  "name": "@pet/server-socket",
+  "version": "1.0.0",
+  "description": "A web socket server with server.io",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo 1",
+    "test": "echo 1",
+    "eject": "echo 1"
+  }
+}
