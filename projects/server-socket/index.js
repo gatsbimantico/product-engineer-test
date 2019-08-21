@@ -25,6 +25,10 @@ io.on('connection', function (socket) {
     io.emit('CHAT_MESSAGE', data);
   });
 
+  socket.on('SHARE_MESSAGE_HISTORY', function (data) {
+    io.emit('MESSAGE_HISTORY', data);
+  });
+
   socket.on('disconnect', function () {
     socket.broadcast.emit('USER_DISCONNECTED');
   });

@@ -4,6 +4,8 @@ export const SocketContext = React.createContext();
 
 export const userId = Math.floor(Math.random() * 1e8);
 
+export const messageSignature = msg => `${msg.time}${msg.userId}`;
+
 class SocketProvider extends React.Component {
   constructor() {
     super();
@@ -11,8 +13,8 @@ class SocketProvider extends React.Component {
     this.state = {
       emit: () => {},
       messages: [{
-        text: '25 15 21 28 10 15 9 14 5 4 28 20 8 5 28 18 15 15 13',
-        time: new Date(),
+        text: '10 15 9 14 5 4 28 20 8 5 28 18 15 15 13',
+        time: new Date().getTime(),
         userId: userId,
       }],
       mounted: true,
@@ -29,10 +31,12 @@ class SocketProvider extends React.Component {
       emit: (msg) => socket.emit('CHAT_MESSAGE', { message: msg, userId }),
     });
 
-    socket.on('USER_CONNECTED', (socket) => {
+    socket.on('USER_CONNECTED', () => {
       const { messages, mounted } = this.state;
 
       if (mounted) {
+        socket.emit('SHARE_MESSAGE_HISTORY', { messages });
+
         this.setState({
           messages: [
             ...messages,
@@ -73,6 +77,21 @@ class SocketProvider extends React.Component {
               text: '1 14 28 21 19 5 18 28 4 9 19 3 15 14 14 5 3 20 5 4',
               time: new Date().getTime(),
             },
+          ]
+        });
+      }
+    });
+
+    socket.on('MESSAGE_HISTORY', (data) => {
+      const { messages, mounted } = this.state;
+
+      const signatures = messages.map(messageSignature);
+
+      if (mounted) {
+        this.setState({
+          messages: [
+            ...messages,
+            ...data.messages.filter(message => signatures.indexOf(messageSignature(message)) === -1)
           ]
         });
       }

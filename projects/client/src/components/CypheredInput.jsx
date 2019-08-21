@@ -4,6 +4,8 @@ import './CypheredInput.css';
 
 const cypher = typeof window !== undefined && window.require && window.require('@pet/cypher');
 
+const cleanEncodedMessage = str => str.replace(/\b0\b\s*/g, '').trim();
+
 export default class CypheredInput extends React.PureComponent {
   constructor() {
     super();
@@ -37,12 +39,18 @@ export default class CypheredInput extends React.PureComponent {
     const { onSubmit } = this.props;
     const { message } = this.state;
 
+    if (!message.trim()) return;
+
     const parsedMessage = message
       ? message.toUpperCase()
       : message;
 
     if (cypher) {
-      onSubmit(cypher.encode(parsedMessage));
+      const encodedMessage = cleanEncodedMessage(cypher.encode(parsedMessage));
+
+      if (!encodedMessage) return;
+
+      onSubmit(encodedMessage);
       this.setState({ message: '' });
     } else {
       fetch('/api/encode', {
@@ -54,7 +62,11 @@ export default class CypheredInput extends React.PureComponent {
         body: JSON.stringify({ message: parsedMessage })
       })
         .then(d => d.text())
-        .then(encodedMessage => {
+        .then(text => {
+          const encodedMessage = cleanEncodedMessage(text);
+
+          if (!encodedMessage) return;
+
           onSubmit(encodedMessage);
           this.setState({ message: '' });
         });

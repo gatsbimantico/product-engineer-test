@@ -15,3 +15,9 @@
 # V1.1 Decoder/Encoder API
 
 - Add the backend routes to allow the decoding/encoding
+
+# V1.2 Bug fixing
+
+- Fix issue in timeline
+- Add recovery history functionality
+- Hide system messages setting
