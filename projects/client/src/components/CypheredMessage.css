@@ -1,0 +1,21 @@
+.cyphered-message {
+  padding: 5px 10px 7px;
+  margin: 3px auto;
+  box-shadow: 0 0 0 1px lightgray;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.cyphered-message__time {
+  text-align: right;
+  font-size: 0.8em;
+  margin: 0 0 5px;
+}
+
+.cyphered-message__user {
+  position: absolute;
+  font-size: 0.8em;
+  font-weight: bold;
+  top: 5px;
+}

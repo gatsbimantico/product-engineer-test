@@ -9,5 +9,9 @@
 - Create a web sockets server with socket.io [Learn more](https://socket.io/get-started/chat/)
 - Create a reverse proxy to combine backend and frontend deployment [Learn more](https://github.com/OptimalBits/redbird)
 - Add `electron` to the app server to open in an app with a link to node [Learn more](https://electronjs.org/)
-- Add cipher project with tests and `nexe` to build a binary [Learn more](https://www.npmjs.com/package/nexe)
+- Add cypher project with tests and `nexe` to build a binary [Learn more](https://www.npmjs.com/package/nexe)
 - Add the whole functionality
+
+# V1.1 Decoder/Encoder API
+
+- Add the backend routes to allow the decoding/encoding

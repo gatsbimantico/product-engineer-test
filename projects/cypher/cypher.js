@@ -20,11 +20,11 @@ function decoder(str) {
   return str.split(' ').map(v => factorize(parseInt(v, 10))).join('');
 }
 
-if (process.argv[1].indexOf('cipher') > -1 && process.argv[2] === 'encode' && process.argv[3]) {
+if (process.argv[1].indexOf('cypher') > -1 && process.argv[2] === 'encode' && process.argv[3]) {
   console.log(encoder(process.argv[3]));
 }
 
-if (process.argv[1].indexOf('cipher') > -1 && process.argv[2] === 'decode' && process.argv[3]) {
+if (process.argv[1].indexOf('cypher') > -1 && process.argv[2] === 'decode' && process.argv[3]) {
   console.log(decoder(process.argv[3]));
 }
 

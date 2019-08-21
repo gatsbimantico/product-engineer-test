@@ -2,22 +2,23 @@ import React from 'react';
 
 import SocketProvider, { SocketContext } from './contexts/SocketProvider'
 
-import CipheredInput from './components/CipheredInput'
-import CipheredMessage from './components/CipheredMessage'
+import CypheredInput from './components/CypheredInput'
+import CypheredMessage from './components/CypheredMessage'
 
 import './App.css';
 
 function App() {
   return (
     <SocketProvider>
-      <div className="App">
+      <div className="app">
+        <p className="share-message">Share this url with your colleagues to start chatting: {window.location.origin}</p>
         <SocketContext.Consumer>
-          {(context) => console.log(context) || (
-            <main>
-              {context.messages.map((message, i) => (
-                <CipheredMessage key={i} message={message} />
+          {(context) => (
+            <main className="message-list">
+              {context.messages.sort((a, b) => b.time - a.time).map((message, i) => (
+                <CypheredMessage key={`${message.time}${message.text}`} message={message} />
               ))}
-              <CipheredInput onSubmit={context.emit} />
+              <CypheredInput onSubmit={context.emit} />
             </main>
           )}
         </SocketContext.Consumer>

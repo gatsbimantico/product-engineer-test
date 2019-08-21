@@ -1,12 +1,12 @@
 {
-  "name": "@pet/cipher",
+  "name": "@pet/cypher",
   "version": "1.0.0",
-  "description": "Cipher code to be used in node",
+  "description": "cypher code to be used in node",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nexe cipher.js",
-    "build": "nexe cipher.js",
+    "start": "nexe cypher.js",
+    "build": "nexe cypher.js",
     "test": "jest",
     "eject": "echo 1"
   },

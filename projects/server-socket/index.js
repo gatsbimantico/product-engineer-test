@@ -1,13 +1,28 @@
 var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
-var request = require('request');
+var bodyParser = require('body-parser');
+var cypher = require('@pet/cypher/cypher.js');
+
+app.use(bodyParser.json());
+
+app.post('/api/decode', function (req, res) {
+  var message = req.body.message;
+
+  res.send(cypher.decoder(message));
+});
+
+app.post('/api/encode', function (req, res) {
+  var message = req.body.message;
+
+  res.send(cypher.encoder(message));
+});
 
 io.on('connection', function (socket) {
   socket.broadcast.emit('USER_CONNECTED');
 
-  socket.on('CHAT_MESSAGE', function (msg) {
-    io.emit('CHAT_MESSAGE', msg);
+  socket.on('CHAT_MESSAGE', function (data) {
+    io.emit('CHAT_MESSAGE', data);
   });
 
   socket.on('disconnect', function () {

@@ -1,7 +1,7 @@
 {
   "name": "product-engineer-test",
-  "version": "0.0",
-  "description": "A cipher chat",
+  "version": "1.1",
+  "description": "A cypher chat",
   "main": "index.js",
   "repository": "https://github.com/gatsbimantico/product-engineer-test.git",
   "author": "Cesar Costas Carrera",

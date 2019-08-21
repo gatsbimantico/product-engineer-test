@@ -15,6 +15,6 @@
     "redbird": "^0.9.1"
   },
   "dependencies": {
-    "@pet/cipher": "1.0.0"
+    "@pet/cypher": "1.0.0"
   }
 }
